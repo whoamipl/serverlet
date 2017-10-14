@@ -24,12 +24,11 @@ public class DataServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
+		response.setContentType ("text/html;charset=utf-8");
 		String happy;
 		String firstName;
 		String lastName;
-		response.setContentType ("text/html;charset=utf-8");
-		request.setCharacterEncoding("UTF-8");
 		
 		PrintWriter out = response.getWriter();
 		

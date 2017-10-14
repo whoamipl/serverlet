@@ -17,11 +17,11 @@ public class FormServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		response.setContentType("text/html");
-		request.setCharacterEncoding("UTF-8");
+
+        response.setContentType ("text/html;charset=utf-8");
+        response.setContentType ("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		out.println("<html><body><h2>Simple form servlet</h2>" +
+		out.println("<html><head><meta charset='utf-8'/><body><h2>Simple form servlet</h2>" +
 				"<form action='data' method='post'>" +
 				"First name: <input type='text' name='firstName' /> <br />"+
 				"Last name: <input type='text' name='lastName' />  <br />" +

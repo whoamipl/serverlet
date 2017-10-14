@@ -18,8 +18,8 @@ public class GreetingServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		response.setContentType("text/html");
-		
+		response.setContentType("text/html;charset=utf-8");
+		System.out.println(response.getContentType());
 		PrintWriter out = response.getWriter();
 		out.println("<html><body><h2>Hello World! Today is " + new java.util.Date() + "</h2></body></html>");
 		out.close();
