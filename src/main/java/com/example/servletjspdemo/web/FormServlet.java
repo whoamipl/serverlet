@@ -19,16 +19,32 @@ public class FormServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		response.setContentType("text/html");
-		
+		request.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<html><body><h2>Simple form servlet</h2>" +
-				"<form action='data'>" +
-				"First name: <input type='text' name='firstName' /> <br />" +
-				"<input type='checkbox' name='hobby' value='bicycle'>I like riding a bicycle<br />" +
-				"<input type='checkbox' name='hobby' value='tv'>I like watching TV<br />" +
-				"<input type='checkbox' name='hobby' value='beer'>I like dringking beer<br />" +
-				"<input type='checkbox' name='hobby' value='books'>I like reading books<br />" +
-				"<input type='submit' value=' OK ' />" +
+				"<form action='data' method='post'>" +
+				"First name: <input type='text' name='firstName' /> <br />"+
+				"Last name: <input type='text' name='lastName' />  <br />" +
+				"<select name='hobby' multiple style='width:200px;'>" +
+				"	<option value='Televison'>Televison</option>" +
+				"	<option value='Music'>Music</option>" +
+				"	<option value='Sport'>Sport</option>" +
+				"	<option value='Programming'>Programming</option>" +
+				"	<option value='Gaming'>Gaming</option>" +
+				"	<option value='Books'>Books</option>"
+				+"</select><br />" +
+				"<lablel style='color:#ff0000'>I'm 18 years old.<input name='happy' type='radio'/></label><br />"+
+			    "<input type='date' name='someDate'/><br/>" +
+				"<input placeholder='Tell sth about you' type='textarea' name='alotOfText' cols='20' rows='50'></br>"+
+			    " <p>Your favourite fruits</p>"+
+			    "<label>" +
+					"<input type='checkbox' />Kiwi</label>" +
+			   
+			    "<label>" +
+			    "<input type='checkbox'  />Jackfruit</label>"+
+			    	"<label>" +
+			    "<input type='checkbox'  />Mango</label>"	+
+				"<input type='submit' value=' OK ' /><br />"+
 				"</form>" +
 				"</body></html>");
 		out.close();
