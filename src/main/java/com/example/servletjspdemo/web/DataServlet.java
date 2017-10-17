@@ -23,6 +23,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static java.util.Objects.isNull;
+
 @WebServlet(urlPatterns = "/data")
 public class DataServlet extends HttpServlet {
 
@@ -57,45 +59,62 @@ public class DataServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType ("text/html;charset=utf-8");
-		String happy;
+		String ruleBook;
 		String firstName;
 		String lastName;
+		String alotOfText;
 		
 		PrintWriter out = response.getWriter();
 
-		isAdult(request.getParameter("someDate"));
-
 		String selectedHobby = "";
+        String chekedFruit = "";
 		for (String hobby : request.getParameterValues("hobby")) {
 			selectedHobby += hobby + " ";
 		}
-		
-		if(request.getParameter("happy") == "On")
-			happy="Yes";
+        if(!isNull(request.getParameterValues("fruit")))
+		    for (String fruit  : request.getParameterValues("fruit")) {
+                chekedFruit += fruit + " ";
+            }
+        else
+            chekedFruit = "Empty";
+		if(request.getParameter("rule") == "On")
+			ruleBook = "Yes";
 		else
-			happy="No";
+			ruleBook = "No";
+		
+		if (request.getParameter("firstName").matches("^[A-Za-z]+$")) {
+			firstName = request.getParameter("firstName");
+		} else if(isNull(request.getParameter("firstName"))) {
+		    firstName = "Empty!";
+        }
+		else
+			firstName = "Error!";
 		
 		if (request.getParameter("lastName").matches("^[A-Za-z]+$")) {
 			lastName = request.getParameter("lastName");
+		} else if (isNull(request.getParameter("lastName"))) {
+            lastName = "Empty!";
 		} else
 			lastName = "Error!";
-		
-		if (request.getParameter("firstName").matches("^[A-Za-z]+$")) {
-			firstName = request.getParameter("lastName");
-		} else
-			firstName = "Error!";
+
+        if (request.getParameter("alotOfText").matches("^[A-Za-z]+$")) {
+            alotOfText = request.getParameter("alotOfText");
+        } else if (isNull(request.getParameter("alotOfText"))) {
+            alotOfText = "Empty!";
+        } else
+            alotOfText = "Error!";
 
 
-
-		
-		out.println("<html><body><h2>Your data</h2>" +
+        out.println("<html><body><h2>Your data</h2>" +
 				"<p>First name: " + firstName + "<br />" +
 				"<p>Last name: " + lastName + "<br /> " +
 				"<p>Your hobby: " + selectedHobby + "<br />" +
-				"<p>Are you happy: " + happy + "<br />"+
-				"<p>Date of birth: " + request.getParameter("someDate") + isAdult(request.getParameter("someDate")) +
+				"<p>Your favourite fruit: " + chekedFruit + "<br />" +
+				"<p>Is rulebook accepted: " + ruleBook + "<br />"+
+				"<p>Date of birth: " + request.getParameter("someDate") +
+                " " +isAdult(request.getParameter("someDate")) +
                 "</br>" +
-				"<p>Everything about you: " + request.getParameter("alotOfText")+
+				"<p>Everything about you: " + alotOfText+
 				"</body></html>");
 		out.close();
 	}

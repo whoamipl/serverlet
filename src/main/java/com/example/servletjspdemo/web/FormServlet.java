@@ -73,6 +73,7 @@ public class FormServlet extends HttpServlet {
 				"\t\t.form-style-1 input[type=time]:focus,\n" +
 				"\t\t.form-style-1 input[type=url]:focus,\n" +
 				"\t\t.form-style-1 input[type=email]:focus,\n" +
+				"\t\t.form-style-1 input[type=checkbox]:focus,\n" +
 				"\t\t.form-style-1 textarea:focus,\n" +
 				"\t\t.form-style-1 select:focus {\n" +
 				"\t\t\t-moz-box-shadow: 0 0 8px #88D5E9;\n" +
@@ -123,14 +124,14 @@ public class FormServlet extends HttpServlet {
 				"\t<h2>Simple form servlet</h2>\n" +
 				"\t<form id=\"form\" action='data' method='post'>\n" +
 				"\t\t<ul class=\"form-style-1\">\n" +
-				"\t\t\t<li><label>Full Name <span class=\"required\">*</span></label><input type=\"text\" name=\"firstName\" class=\"field-divided\" placeholder=\"First\" />&nbsp;<input type=\"text\" name=\"lastName\" class=\"field-divided\" placeholder=\"Last\" /></li>\n" +
+				"\t\t\t<li><label>Full Name <span class=\"required\">*</span></label><input type=\"text\" name=\"firstName\" class=\"field-divided\" placeholder=\"First\" required/>&nbsp;<input type=\"text\" name=\"lastName\" class=\"field-divided\" placeholder=\"Last\"required /></li>\n" +
 				"\t\t\t<li>\n" +
 				"\t\t\t\t<label>Date of birth <span class=\"required\">*</span></label>\n" +
-				"\t\t\t\t<input type='date' name='someDate' class=\"field-long\" />\n" +
+				"\t\t\t\t<input type='date' name='someDate' class=\"field-long\" required/>\n" +
 				"\t\t\t</li>\n" +
 				"\t\t\t<li>\n" +
 				"\t\t\t\t<label>Hobby</label>\n" +
-				"\t\t\t\t<select name='hobby' multiple style='width:200px;'>\n" +
+				"\t\t\t\t<select name='hobby' multiple style='width:200px;' required>\n" +
 				"\t\t\t\t\t\t<option value='Televison'>Televison</option>\n" +
 				"\t\t\t\t\t\t<option value='Music'>Music</option>\n" +
 				"\t\t\t\t\t\t<option value='Sport'>Sport</option>\n" +
@@ -141,17 +142,20 @@ public class FormServlet extends HttpServlet {
 				"\t\t\t</li>\n" +
 				"\t\t\t<li>\n" +
 				"\t\t\t\t<label>Something about you: <span class=\"required\">*</span></label>\n" +
-				"\t\t\t\t<textarea name=\"field5\" id=\"field5\" class=\"field-long field-textarea\"></textarea>\n" +
+				"\t\t\t\t<textarea name=\"alotOfText\" id=\"field5\" class=\"field-long " +
+				"field-textarea\"></textarea>\n" +
 				"\t\t\t</li>\n" +
 				"\t\t\t<li>\n" +
 				"\t\t\t\t<label>Favourite fruit: <span class=\"required\">*</span></label>\n" +
-				"\t\t\t\t<label><input type='checkbox' />Kiwi</label>\n" +
-				"\t\t\t\t<label><input type='checkbox'  />Jackfruit</label>\n" +
-				"\t\t\t\t<label> <input type='checkbox'  />Mango</label>\n" +
+                "\t\t\t\t<fieldset required>"+
+				"\t\t\t\t<label><input type='checkbox' name=\"fruit\" value=\"Kiwi\"  />Kiwi</label>\n" +
+				"\t\t\t\t<label><input type='checkbox' name=\"fruit\" value=\"Jackfruit\" />Jackfruit</label>\n" +
+				"\t\t\t\t<label><input type='checkbox' name=\"fruit\" value=\"Mango\" />Mango</label>\n" +
+                        "\t\t\t\t</fieldset>"+
 				"\t\t\t</li>\n" +
 				"\t\t\t<li>\n" +
 				"\t\t\t\t<label>I'm accepting the rulebook: </label>\n" +
-				"\t\t\t\t<input type=\"radio\" name=\"rulebook\" />\n" +
+				"\t\t\t\t<input type=\"radio\" name=\"rule\" required />\n" +
 				"\t\t\t</li>\n" +
 				"\t\t\t<li>\n" +
 				"\t\t\t\t<input type=\"submit\" value=\"OK\" />\n" +
